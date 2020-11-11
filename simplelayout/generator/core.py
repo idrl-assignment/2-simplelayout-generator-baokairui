@@ -8,7 +8,7 @@ import numpy as np
 
 def generate_matrix(
     board_grid: int, unit_grid: int, unit_n: int, positions: list
-) -> np.ndarray:
+):
     """生成指定布局矩阵
 
     Args:
@@ -19,4 +19,11 @@ def generate_matrix(
     Returns:
         np.ndarray: 布局矩阵
     """
-    raise NotImplementedError  # TODO: 实现布局矩阵的生成
+    # TODO: 实现布局矩阵的生成
+    length = int(board_grid / unit_grid)
+    size = length ** 2
+    img = np.ones(size)
+    for item in positions:
+        img[item - 1] = 0
+    img = img.reshape(unit_grid, -1)
+    return img
