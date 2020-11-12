@@ -15,6 +15,8 @@ def save_matrix(matrix, file_name):
 def save_fig(matrix, file_name):
     # TODO: 将 matrix 画图保存到 file_name.jpg
     plt.imsave("{}.{}".format(file_name, 'jpg'), matrix, cmap="gray")
+    plt.imshow(matrix)
+    plt.show()
 
 
 def make_dir(outdir):
