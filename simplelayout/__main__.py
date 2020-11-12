@@ -3,6 +3,7 @@ from simplelayout.cli import get_options  # TODO: 保证不修改本行也可以
 from simplelayout.generator.core import generate_matrix
 from simplelayout.generator.utils import save_matrix
 from simplelayout.generator.utils import save_fig
+from simplelayout.generator.utils import make_dir
 
 
 def main():
@@ -10,8 +11,10 @@ def main():
     option = get_options()
     image = generate_matrix(
         option.board_grid, option.unit_grid, option.unit_n, option.positions)
-    save_matrix(image, option.file_name)
-    save_fig(image, option.file_name)
+    make_dir(option.outdir)
+    file_path = '{}/{}'.format(option.outdir, option.file_name)
+    save_matrix(image, file_path)
+    save_fig(image, file_path)
 
 
 if __name__ == "__main__":
